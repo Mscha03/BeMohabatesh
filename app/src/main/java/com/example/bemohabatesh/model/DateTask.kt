@@ -3,7 +3,7 @@ package com.example.bemohabatesh.model
 import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 
 class DateTask(
-    id: Int, title: String, description: String, isDone: Int, createdAt: ShamsiCalendar
+    id: Int = 0, title: String = "", description: String = "", isDone: Int = 0, createdAt: ShamsiCalendar = ShamsiCalendar()
 
 ) :Task(id, title, description, isDone, createdAt) {
 

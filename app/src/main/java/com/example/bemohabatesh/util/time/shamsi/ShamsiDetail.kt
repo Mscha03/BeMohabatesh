@@ -1,9 +1,9 @@
 package com.example.bemohabatesh.util.time.shamsi
 
-class ShamsiNames {
+class ShamsiDetail {
     companion object {
 
-        enum class Months {
+        enum class MonthsNames {
             FARVARDIN,
             ORDIBEHESHT,
             KHORDAD,
@@ -18,7 +18,7 @@ class ShamsiNames {
             ESFAND
         }
 
-        enum class DaysOfWeek {
+        enum class DaysOfWeekNames {
             SHANBE,
             YEKSHANBE,
             DOSHANBE,
@@ -27,6 +27,10 @@ class ShamsiNames {
             PANJSHANBE,
             JOMEE
         }
+
+
+
+
 
     }
 }
