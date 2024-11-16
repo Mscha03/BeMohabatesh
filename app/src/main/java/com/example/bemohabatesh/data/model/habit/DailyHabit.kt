@@ -1,6 +1,6 @@
-package com.example.bemohabatesh.model.habit
+package com.example.bemohabatesh.data.model.habit
 
-import com.example.bemohabatesh.model.Task
+import com.example.bemohabatesh.data.model.Task
 import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 
 open class DailyHabit(

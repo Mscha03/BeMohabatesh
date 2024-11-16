@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.model.habit
+package com.example.bemohabatesh.data.model.habit
 
 enum class TaskType {
     SimpleTask,

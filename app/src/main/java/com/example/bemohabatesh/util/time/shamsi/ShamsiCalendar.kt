@@ -14,8 +14,8 @@ class ShamsiCalendar {
     private var week: Int = 0;
     private var day: Int = 0;
     private var hour: Int = 0;
-    private var min: Int = 0;
-    private var sec: Int = 0;
+    private var minute: Int = 0;
+    private var second: Int = 0;
 
     constructor() { // تنظیم کردن تاریخ امروز و زمان فعلی برای شی
 
@@ -27,8 +27,8 @@ class ShamsiCalendar {
         this.week = weekOfYear(JalaliCalendar(this.year, this.month, this.day))
         this.day = date.day
         this.hour = time.hour
-        this.min = time.minute
-        this.sec = time.second
+        this.minute = time.minute
+        this.second = time.second
     }
 
     constructor(year: Int, month: Int, week: Int, day: Int) { // اضافه کردن تاریخ وارد شده بدون زمان
@@ -41,8 +41,8 @@ class ShamsiCalendar {
     constructor(year: Int, month: Int, week: Int, day: Int, hour: Int, min: Int, sec:Int)
             : this(year, month, week, day){ // اضافه کردن تاریخ و زمان وارد شده
         this.hour = hour
-        this.min = min
-        this.sec = sec
+        this.minute = min
+        this.second = sec
     }
 
     companion object {
@@ -70,5 +70,11 @@ class ShamsiCalendar {
 
     }
 
+    fun getYear(): Int {return year}
+    fun getMonth(): Int {return month}
+    fun getDay(): Int {return day}
+    fun getHour(): Int {return hour}
+    fun getMinute(): Int {return minute}
+    fun getSecond(): Int {return second}
 
 }
