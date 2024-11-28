@@ -14,6 +14,7 @@ private const val TAG = "SIMPLE_TASK_DATA_BASE_HELPER"
 private const val DB_NAME = "SIMPLE_TASK_DATABASE"
 private const val DB_VERSION = 1
 
+
 // table name
 private const val TABLE_NAME = "SIMPLE_TASK_TABLE"
 
@@ -29,7 +30,7 @@ private const val COLUMN_TASK_CREATE_YEAR = "CREATE_YEAR"
 
 
 
-class SimpleTaskDataBaseHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
+class TrashDataBaseHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION){
 
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -55,12 +56,12 @@ class SimpleTaskDataBaseHelper(context: Context): SQLiteOpenHelper(context, DB_N
         val db = this.writableDatabase
         val values = ContentValues()
 
-        values.put(COLUMN_TASK_TITLE, task.getTitle())
-        values.put(COLUMN_TASK_DESCRIPTION, task.getDescription())
-        values.put(COLUMN_TASK_IS_DONE, task.getIsDone())
-        values.put(COLUMN_TASK_CREATE_DAY, task.getCreatedDay().getDay())
-        values.put(COLUMN_TASK_CREATE_MONTH, task.getCreatedDay().getMonth())
-        values.put(COLUMN_TASK_CREATE_YEAR, task.getCreatedDay().getYear())
+        values.put(COLUMN_TASK_TITLE, task.title)
+        values.put(COLUMN_TASK_DESCRIPTION, task.description)
+        values.put(COLUMN_TASK_IS_DONE, task.isDone)
+        values.put(COLUMN_TASK_CREATE_DAY, task.createdAt.getDay())
+        values.put(COLUMN_TASK_CREATE_MONTH, task.createdAt.getMonth())
+        values.put(COLUMN_TASK_CREATE_YEAR, task.createdAt.getYear())
 
         db.insert(TABLE_NAME, null, values)
     }
@@ -99,19 +100,20 @@ class SimpleTaskDataBaseHelper(context: Context): SQLiteOpenHelper(context, DB_N
         val db = this.writableDatabase
         val values = ContentValues()
 
-        values.put(COLUMN_TASK_TITLE, task.getTitle())
-        values.put(COLUMN_TASK_DESCRIPTION, task.getDescription())
-        values.put(COLUMN_TASK_IS_DONE, task.getIsDone())
-        values.put(COLUMN_TASK_CREATE_DAY, task.getCreatedDay().getDay())
-        values.put(COLUMN_TASK_CREATE_MONTH, task.getCreatedDay().getMonth())
-        values.put(COLUMN_TASK_CREATE_YEAR, task.getCreatedDay().getYear())
+        values.put(COLUMN_TASK_TITLE, task.title)
+        values.put(COLUMN_TASK_DESCRIPTION, task.description)
+        values.put(COLUMN_TASK_IS_DONE, task.isDone)
+        values.put(COLUMN_TASK_CREATE_DAY, task.createdAt.getDay())
+        values.put(COLUMN_TASK_CREATE_MONTH, task.createdAt.getMonth())
+        values.put(COLUMN_TASK_CREATE_YEAR, task.createdAt.getYear())
 
-        db.update(TABLE_NAME, values, "$COLUMN_TASK_ID = ? ", arrayOf(task.getId().toString()))
+        db.update(TABLE_NAME, values, "$COLUMN_TASK_ID = ? ", arrayOf(task.id.toString()))
         db.close()
     }
 
     private fun deleteTask(task: SimpleTask){
         val db = this.writableDatabase
-        db.delete(TABLE_NAME, "$COLUMN_TASK_ID = ?", arrayOf(task.getId().toString()))
+        db.delete(TABLE_NAME, "$COLUMN_TASK_ID = ?", arrayOf(task.id.toString()))
     }
+
 }

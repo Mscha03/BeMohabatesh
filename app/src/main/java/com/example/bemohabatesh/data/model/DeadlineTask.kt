@@ -2,11 +2,15 @@ package com.example.bemohabatesh.data.model
 
 import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 
-class DeadlineTask(
-    id: Int = 0, title: String = "", description: String = "", isDone: Int = 0, createdAt: ShamsiCalendar = ShamsiCalendar()
+data class DeadlineTask(
+    var id: Int = 0,
+    var title: String = "",
+    var description: String = "",
+    var isDone: Int = 0,
+    var createdAt: ShamsiCalendar = ShamsiCalendar()
 
 ) : Task(id, title, description, isDone, createdAt) {
 
-    private var deadline = ShamsiCalendar()
-    private var subTasks = ArrayList<SimpleTask>()
+    var deadline = ShamsiCalendar()
+    var subTasks = ArrayList<SimpleTask>()
 }
