@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.data.model
+package com.example.bemohabatesh.data.model.tasks
 
 import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 

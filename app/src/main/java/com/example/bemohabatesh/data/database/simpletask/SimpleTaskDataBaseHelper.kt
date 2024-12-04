@@ -1,0 +1,139 @@
+package com.example.bemohabatesh.data.database.simpletask
+
+import android.content.ContentValues
+import android.content.Context
+import android.database.Cursor
+import com.example.bemohabatesh.data.database.DataBaseHelper
+import com.example.bemohabatesh.data.model.database.simpletask.SimpleTaskDataBaseInformation
+import com.example.bemohabatesh.data.model.database.simpletask.SimpleTaskReminderDataBaseInformation
+import com.example.bemohabatesh.data.model.tasks.SimpleTask
+import com.example.bemohabatesh.data.model.tasks.Task
+import com.example.bemohabatesh.data.repository.interfacess.EditableTask
+import com.example.bemohabatesh.data.repository.interfacess.RemindingTask
+import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
+
+
+class SimpleTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask {
+
+    private val taskDb = DataBaseHelper(
+        context = context,
+        tableName = SimpleTaskDataBaseInformation.TABLE_NAME,
+        columnsName = SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME,
+        columnsType = SimpleTaskDataBaseInformation.TABLE_COLUMNS_TYPE
+    )
+
+    private val remindDb = DataBaseHelper(
+        context = context,
+        tableName = SimpleTaskReminderDataBaseInformation.TABLE_NAME,
+        columnsName = SimpleTaskReminderDataBaseInformation.TABLE_COLUMNS_NAME,
+        columnsType = SimpleTaskReminderDataBaseInformation.TABLE_COLUMNS_TYPE,
+        primaryKey = true,
+        foreignKeyColumns =
+        arrayOf(
+            SimpleTaskReminderDataBaseInformation.TABLE_COLUMNS_NAME[1],
+            SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[0]
+        ).toCollection(ArrayList())
+    )
+
+
+    override fun insertTask(task: Task): Long {
+        val simpleTask = task as SimpleTask
+        val values = ContentValues()
+
+        values.put(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[1], simpleTask.title)
+        values.put(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[2], simpleTask.description)
+        values.put(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[3], simpleTask.isDone)
+        values.put(
+            SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[4],
+            simpleTask.createdAt.getDay()
+        )
+        values.put(
+            SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[5],
+            simpleTask.createdAt.getMonth()
+        )
+        values.put(
+            SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[6],
+            simpleTask.createdAt.getYear()
+        )
+
+        return taskDb.insert(values)
+    }
+
+    override fun readTask(taskId: Int): Cursor {
+        return taskDb.read(
+            arrayOf(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[0]).toCollection(ArrayList()),
+            arrayOf(taskId.toString()).toCollection(ArrayList())
+        )
+    }
+
+    override fun readAllTask(): Cursor {
+        return taskDb.readAll(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME)
+    }
+
+    override fun updateTask(task: Task): Int {
+        val simpleTask = task as SimpleTask
+        val values = ContentValues()
+
+        values.put(SimpleTaskDataBaseInformation.COLUMN_TASK_TITLE, simpleTask.title)
+        values.put(SimpleTaskDataBaseInformation.COLUMN_TASK_DESCRIPTION, simpleTask.description)
+        values.put(SimpleTaskDataBaseInformation.COLUMN_TASK_IS_DONE, simpleTask.isDone)
+        values.put(
+            SimpleTaskDataBaseInformation.COLUMN_TASK_CREATE_DAY,
+            simpleTask.createdAt.getDay()
+        )
+        values.put(
+            SimpleTaskDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
+            simpleTask.createdAt.getMonth()
+        )
+        values.put(
+            SimpleTaskDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
+            simpleTask.createdAt.getYear()
+        )
+
+        return taskDb.update(values, SimpleTaskDataBaseInformation.COLUMN_ID, simpleTask.id)
+    }
+
+    override fun deleteTask(taskId: Int): Int {
+        return taskDb.delete(SimpleTaskDataBaseInformation.COLUMN_ID, taskId)
+    }
+
+    override fun insertReminder(mainTaskId: Int, date: ShamsiCalendar) {
+        val values = ContentValues()
+
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        remindDb.insert(values)
+    }
+
+    override fun readReminder(mainTaskId: Int) {
+        remindDb.read(
+            arrayOf(SimpleTaskReminderDataBaseInformation.COLUMN_TASK_ID).toCollection(ArrayList()),
+            arrayOf(mainTaskId.toString()).toCollection(ArrayList())
+        )
+    }
+
+    override fun updateReminder(mainTaskId: Int, date: ShamsiCalendar) {
+        val values = ContentValues()
+
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
+        values.put(SimpleTaskReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        remindDb.update(
+            values,
+            SimpleTaskReminderDataBaseInformation.COLUMN_TASK_ID,
+            mainTaskId
+        )
+    }
+
+    override fun deleteReminder(mainTaskId: Int) {
+        remindDb.delete(SimpleTaskReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
+    }
+
+}

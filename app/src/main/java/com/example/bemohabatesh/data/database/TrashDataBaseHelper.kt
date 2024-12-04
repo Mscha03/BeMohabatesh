@@ -5,7 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.bemohabatesh.data.model.SimpleTask
+import com.example.bemohabatesh.data.model.tasks.SimpleTask
 
 // tag
 private const val TAG = "SIMPLE_TASK_DATA_BASE_HELPER"

@@ -1,7 +1,7 @@
 package com.example.bemohabatesh.data.repository.interfacess
 
 import android.database.Cursor
-import com.example.bemohabatesh.data.model.Task
+import com.example.bemohabatesh.data.model.tasks.Task
 
 interface EditableTask {
      fun insertTask(task: Task): Long

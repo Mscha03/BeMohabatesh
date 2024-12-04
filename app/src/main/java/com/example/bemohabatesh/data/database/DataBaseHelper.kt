@@ -13,12 +13,13 @@ private const val DB_NAME = "TASK_DATABASE"
 private const val DB_VERSION = 1
 
 
-abstract class DataBaseHelper(
-    context: Context, private val tableName: String,
+class DataBaseHelper(
+    context: Context,
+    private val tableName: String,
     private val columnsName: ArrayList<String>,
     private val columnsType: ArrayList<String>,
     private val primaryKey: Boolean = false,
-    private val foreignKeyColumns: ArrayList<String>
+    private val foreignKeyColumns: ArrayList<String> = arrayOf("", "").toCollection(ArrayList())
 ) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
 
@@ -69,7 +70,7 @@ abstract class DataBaseHelper(
     }
 
 
-    private fun insert(
+    fun insert(
         values: ContentValues
     ):Long {
         val db = this.writableDatabase
@@ -79,7 +80,7 @@ abstract class DataBaseHelper(
     }
 
 
-    private fun insertAll(values: ArrayList<ContentValues>) {
+    fun insertAll(values: ArrayList<ContentValues>) {
         val db = this.writableDatabase
 
         values.forEach { v ->
@@ -90,7 +91,7 @@ abstract class DataBaseHelper(
 
     }
 
-    private fun read(columnName: ArrayList<String>, value: ArrayList<String>): Cursor {
+    fun read(columnName: ArrayList<String>, value: ArrayList<String>): Cursor {
         val db = this.readableDatabase
 
         val selection = ""
@@ -122,25 +123,14 @@ abstract class DataBaseHelper(
         return cursor
     }
 
-    private fun readAll(columnName: ArrayList<String>): Cursor {
+    fun readAll(columnName: ArrayList<String>): Cursor {
         val db = this.readableDatabase
-
-        val selection = ""
-
-        for (i in 0..columnsName.size) {
-            if (i != (columnsName.size - 1)) {
-                selection.plus("${columnName[i]} = ? AND ")
-            } else {
-                selection.plus("${columnsName[i]} = ?")
-            }
-        }
-        Log.d(TAG, "readAll: selection = $selection")
 
 
         val cursor = db.query(
             tableName,
             null,
-            selection,
+            null,
             null,
             null,
             null,
@@ -151,18 +141,19 @@ abstract class DataBaseHelper(
         return cursor
     }
 
-    private fun update(values: ContentValues, idColumnName:String, id:Int) {
+    fun update(values: ContentValues, idColumnName:String, id:Int): Int {
         val db = this.writableDatabase
-        db.update(tableName, values, "$idColumnName = ?", arrayOf(id.toString()))
+        val returnValue = db.update(tableName, values, "$idColumnName = ?", arrayOf(id.toString()))
         Log.d(TAG, "update: function finished")
+        return returnValue
     }
 
-    private fun delete(idColumnName:String, id:Int) {
+    fun delete(idColumnName:String, id:Int): Int {
         val db = this.writableDatabase
-        db.delete(tableName, "$idColumnName = ?", arrayOf(id.toString()))
+        return db.delete(tableName, "$idColumnName = ?", arrayOf(id.toString()))
     }
 
-    private fun deleteAll(idColumnName:String) {
+    fun deleteAll(idColumnName:String) {
         val db = this.writableDatabase
         db.delete(tableName, "$idColumnName = ?", null)
 
