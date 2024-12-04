@@ -1,8 +1,8 @@
-package com.example.bemohabatesh.data.model.database.dateTask
+package com.example.bemohabatesh.data.model.database.deadlineTask
 
-class DateTaskDataBaseInformation {
+class DeadLineDataBaseInformation {
     companion object{
-        const val TABLE_NAME = "DATE_TASK"
+        const val TABLE_NAME = "DEADLINE_TASK"
 
         const val COLUMN_ID = "ID"
         const val COLUMN_TASK_TITLE = "TASK_TITLE"
@@ -33,4 +33,5 @@ class DateTaskDataBaseInformation {
             "INTEGER", "TEXT", "TEXT", "INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER"
         ).toCollection(ArrayList())
     }
+
 }

@@ -1,14 +1,11 @@
-package com.example.bemohabatesh.data.database
+package com.example.bemohabatesh.data.repository.databasehelper
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import com.example.bemohabatesh.data.model.database.dateTask.DateTaskDataBaseInformation
 import com.example.bemohabatesh.data.model.database.dateTask.DateTaskReminderDataBaseInformation
-import com.example.bemohabatesh.data.model.database.simpletask.SimpleTaskDataBaseInformation
-import com.example.bemohabatesh.data.model.database.simpletask.SimpleTaskReminderDataBaseInformation
 import com.example.bemohabatesh.data.model.tasks.DateTask
-import com.example.bemohabatesh.data.model.tasks.SimpleTask
 import com.example.bemohabatesh.data.model.tasks.Task
 import com.example.bemohabatesh.data.repository.interfacess.EditableTask
 import com.example.bemohabatesh.data.repository.interfacess.RemindingTask
@@ -101,8 +98,8 @@ class DateTaskDataBaseHelper(context: Context): EditableTask, RemindingTask {
         remindDb.insert(values)
     }
 
-    override fun readReminder(mainTaskId: Int) {
-        remindDb.read(
+    override fun readReminder(mainTaskId: Int): Cursor {
+        return remindDb.read(
             arrayOf(DateTaskReminderDataBaseInformation.COLUMN_TASK_ID).toCollection(ArrayList()),
             arrayOf(mainTaskId.toString()).toCollection(ArrayList())
         )
