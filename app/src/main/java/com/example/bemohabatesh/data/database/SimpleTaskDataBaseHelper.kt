@@ -1,9 +1,8 @@
-package com.example.bemohabatesh.data.database.simpletask
+package com.example.bemohabatesh.data.database
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import com.example.bemohabatesh.data.database.DataBaseHelper
 import com.example.bemohabatesh.data.model.database.simpletask.SimpleTaskDataBaseInformation
 import com.example.bemohabatesh.data.model.database.simpletask.SimpleTaskReminderDataBaseInformation
 import com.example.bemohabatesh.data.model.tasks.SimpleTask
@@ -30,8 +29,8 @@ class SimpleTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask {
         primaryKey = true,
         foreignKeyColumns =
         arrayOf(
-            SimpleTaskReminderDataBaseInformation.TABLE_COLUMNS_NAME[1],
-            SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[0]
+            SimpleTaskReminderDataBaseInformation.COLUMN_TASK_ID,
+            SimpleTaskDataBaseInformation.COLUMN_ID
         ).toCollection(ArrayList())
     )
 
@@ -40,19 +39,19 @@ class SimpleTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask {
         val simpleTask = task as SimpleTask
         val values = ContentValues()
 
-        values.put(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[1], simpleTask.title)
-        values.put(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[2], simpleTask.description)
-        values.put(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[3], simpleTask.isDone)
+        values.put(SimpleTaskDataBaseInformation.COLUMN_TASK_TITLE, simpleTask.title)
+        values.put(SimpleTaskDataBaseInformation.COLUMN_TASK_DESCRIPTION, simpleTask.description)
+        values.put(SimpleTaskDataBaseInformation.COLUMN_TASK_IS_DONE, simpleTask.isDone)
         values.put(
-            SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[4],
+            SimpleTaskDataBaseInformation.COLUMN_TASK_CREATE_DAY,
             simpleTask.createdAt.getDay()
         )
         values.put(
-            SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[5],
+            SimpleTaskDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
             simpleTask.createdAt.getMonth()
         )
         values.put(
-            SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[6],
+            SimpleTaskDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
             simpleTask.createdAt.getYear()
         )
 
@@ -61,7 +60,7 @@ class SimpleTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask {
 
     override fun readTask(taskId: Int): Cursor {
         return taskDb.read(
-            arrayOf(SimpleTaskDataBaseInformation.TABLE_COLUMNS_NAME[0]).toCollection(ArrayList()),
+            arrayOf(SimpleTaskDataBaseInformation.COLUMN_ID).toCollection(ArrayList()),
             arrayOf(taskId.toString()).toCollection(ArrayList())
         )
     }

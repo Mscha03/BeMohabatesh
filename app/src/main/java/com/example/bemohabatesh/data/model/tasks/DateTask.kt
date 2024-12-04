@@ -11,5 +11,5 @@ data class DateTask(
 
 ) : Task(id, title, description, isDone, createdAt) {
 
-    private var deadline = ShamsiCalendar()
+    var deadline = ShamsiCalendar()
 }
