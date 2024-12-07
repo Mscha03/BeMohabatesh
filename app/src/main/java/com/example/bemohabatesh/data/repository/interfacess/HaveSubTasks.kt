@@ -8,5 +8,5 @@ interface HaveSubTasks {
     fun insertSubTask(mainTask: Task, subTasks: ArrayList<SimpleTask>)
     fun readAllSubTask(taskId: Int): Cursor
     fun updateSubTask(mainTaskId: Int, subTask: SimpleTask)
-    fun deleteTask(subTask: SimpleTask)
+    fun deleteSubTask(subTask: SimpleTask)
 }

@@ -33,5 +33,4 @@ class DeadLineDataBaseInformation {
             "INTEGER", "TEXT", "TEXT", "INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER"
         ).toCollection(ArrayList())
     }
-
 }

@@ -108,8 +108,8 @@ class SimpleTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask {
         remindDb.insert(values)
     }
 
-    override fun readReminder(mainTaskId: Int) {
-        remindDb.read(
+    override fun readReminder(mainTaskId: Int): Cursor {
+        return remindDb.read(
             arrayOf(SimpleTaskReminderDataBaseInformation.COLUMN_TASK_ID).toCollection(ArrayList()),
             arrayOf(mainTaskId.toString()).toCollection(ArrayList())
         )
