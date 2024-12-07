@@ -1,8 +1,8 @@
-package com.example.bemohabatesh.data.model.database.dailyhabit
+package com.example.bemohabatesh.data.model.database.weeklyhabit
 
-class DailyHabitReminderDataBaseInformation {
+class WeeklyHabitReminderDataBaseInformation {
     companion object{
-        const val TABLE_NAME = "DAILY_HABIT_REMINDER"
+        const val TABLE_NAME = "WEEKLY_HABIT_REMINDER"
 
         const val COLUMN_ID = "ID"
         const val COLUMN_TASK_ID = "TASK_ID"

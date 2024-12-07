@@ -14,7 +14,7 @@ import com.example.bemohabatesh.data.repository.interfacess.HistoricalTask
 import com.example.bemohabatesh.data.repository.interfacess.RemindingTask
 import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 
-class DailyHabitDataBaseHelper(context: Context):EditableTask, RemindingTask, HistoricalTask {
+class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, HistoricalTask {
 
     private val taskDb = DataBaseHelper(
         context = context,
@@ -55,9 +55,18 @@ class DailyHabitDataBaseHelper(context: Context):EditableTask, RemindingTask, Hi
 
         values.put(DailyHabitDataBaseInformation.COLUMN_TASK_TITLE, dailyHabit.title)
         values.put(DailyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, dailyHabit.description)
-        values.put(DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY, dailyHabit.createdAt.getDay())
-        values.put(DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY, dailyHabit.createdAt.getMonth())
-        values.put(DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY, dailyHabit.createdAt.getYear())
+        values.put(
+            DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
+            dailyHabit.createdAt.getDay()
+        )
+        values.put(
+            DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
+            dailyHabit.createdAt.getMonth()
+        )
+        values.put(
+            DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
+            dailyHabit.createdAt.getYear()
+        )
 
         return taskDb.insert(values)
     }
@@ -66,7 +75,8 @@ class DailyHabitDataBaseHelper(context: Context):EditableTask, RemindingTask, Hi
         return taskDb.read(
             arrayOf(DailyHabitDataBaseInformation.COLUMN_ID).toCollection(ArrayList()),
             arrayOf(taskId.toString()).toCollection(ArrayList())
-        )        }
+        )
+    }
 
     override fun readAllTask(): Cursor {
         return taskDb.readAll(DailyHabitDataBaseInformation.TABLE_COLUMNS_NAME)
@@ -78,11 +88,21 @@ class DailyHabitDataBaseHelper(context: Context):EditableTask, RemindingTask, Hi
 
         values.put(DailyHabitDataBaseInformation.COLUMN_TASK_TITLE, dailyHabit.title)
         values.put(DailyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, dailyHabit.description)
-        values.put(DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY, dailyHabit.createdAt.getDay())
-        values.put(DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY, dailyHabit.createdAt.getMonth())
-        values.put(DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY, dailyHabit.createdAt.getYear())
+        values.put(
+            DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
+            dailyHabit.createdAt.getDay()
+        )
+        values.put(
+            DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
+            dailyHabit.createdAt.getMonth()
+        )
+        values.put(
+            DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
+            dailyHabit.createdAt.getYear()
+        )
 
-        return taskDb.update(values, DailyHabitDataBaseInformation.COLUMN_ID, dailyHabit.id)    }
+        return taskDb.update(values, DailyHabitDataBaseInformation.COLUMN_ID, dailyHabit.id)
+    }
 
     override fun deleteTask(taskId: Int): Int {
         return taskDb.delete(DailyHabitDataBaseInformation.COLUMN_ID, taskId)
@@ -104,7 +124,8 @@ class DailyHabitDataBaseHelper(context: Context):EditableTask, RemindingTask, Hi
         return remindDb.read(
             arrayOf(DailyHabitReminderDataBaseInformation.COLUMN_TASK_ID).toCollection(ArrayList()),
             arrayOf(mainTaskId.toString()).toCollection(ArrayList())
-        )    }
+        )
+    }
 
     override fun updateReminder(mainTaskId: Int, date: ShamsiCalendar) {
         val values = ContentValues()
@@ -117,7 +138,7 @@ class DailyHabitDataBaseHelper(context: Context):EditableTask, RemindingTask, Hi
         values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
         remindDb.update(
             values,
-            DeadLineReminderDataBaseInformation.COLUMN_TASK_ID,
+            DailyHabitReminderDataBaseInformation.COLUMN_TASK_ID,
             mainTaskId
         )
     }
@@ -127,7 +148,7 @@ class DailyHabitDataBaseHelper(context: Context):EditableTask, RemindingTask, Hi
     }
 
     override fun insertAllHistoryItem(mainTaskId: Int, days: ArrayList<ShamsiCalendar>) {
-        days.forEach { day->
+        days.forEach { day ->
             val values = ContentValues()
             values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_ID, mainTaskId)
             values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.getYear())

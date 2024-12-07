@@ -4,11 +4,11 @@ import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 import com.example.bemohabatesh.util.time.shamsi.ShamsiDetail
 
 data class WeeklyHabit(
-    var id: Int = 0,
-    var title: String = "",
-    var description: String = "",
-    var isDone: Int = 0,
-    var createdAt: ShamsiCalendar = ShamsiCalendar()
+    override var id: Int = 0,
+    override var title: String = "",
+    override var description: String = "",
+    override var isDone: Int = 0,
+    override var createdAt: ShamsiCalendar = ShamsiCalendar()
 
 ): DailyHabit(id, title, description, isDone, createdAt){
 

@@ -72,6 +72,7 @@ class ShamsiCalendar {
 
     fun getYear(): Int {return year}
     fun getMonth(): Int {return month}
+    fun getWeek(): Int {return week}
     fun getDay(): Int {return day}
     fun getHour(): Int {return hour}
     fun getMinute(): Int {return minute}
