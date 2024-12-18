@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">BeMohabatesh</string>
+
+    <string-array name="shamsiMonth">
+        <item>Farvardin</item>
+        <item>Ordibehesht</item>
+        <item>Khordad</item>
+        <item>Tir</item>
+        <item>Mordad</item>
+        <item>Shahrivar</item>
+        <item>Mehr</item>
+        <item>Aban</item>
+        <item>Azar</item>
+        <item>Day</item>
+        <item>Bahman</item>
+        <item>Esfand</item>
+    </string-array>
+
+    <string-array name="shamsiWeekDay">
+        <item>Saturday</item>
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+    </string-array>
+
 </resources>

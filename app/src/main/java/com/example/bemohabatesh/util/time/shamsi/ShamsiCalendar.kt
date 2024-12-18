@@ -9,13 +9,14 @@ class ShamsiCalendar {
     //Jalali Calendar With Week
 
     // parameter
-    private var year: Int = 0;
-    private var month: Int = 0;
-    private var week: Int = 0;
-    private var day: Int = 0;
-    private var hour: Int = 0;
-    private var minute: Int = 0;
-    private var second: Int = 0;
+    private var year: Int = 0
+    private var month: Int = 0
+    private var week: Int = 0
+    private var day: Int = 0
+    private var dayOfWeek: Int = 0
+    private var hour: Int = 0
+    private var minute: Int = 0
+    private var second: Int = 0
 
     constructor() { // تنظیم کردن تاریخ امروز و زمان فعلی برای شی
 
@@ -24,8 +25,9 @@ class ShamsiCalendar {
 
         this.year = date.year
         this.month = date.month
-        this.week = weekOfYear(JalaliCalendar(this.year, this.month, this.day))
+        this.week = weekOfYear(date)
         this.day = date.day
+        this.dayOfWeek = date.dayOfWeek
         this.hour = time.hour
         this.minute = time.minute
         this.second = time.second
@@ -56,8 +58,6 @@ class ShamsiCalendar {
             val startOfYearJalaliGregorian = startOfYearJalali.toGregorian()
 
             // محاسبه اختلاف روزها
-            val t = gregorianCalendar.timeInMillis
-            val s = startOfYearJalaliGregorian.timeInMillis
             val diffInMillis = gregorianCalendar.timeInMillis - startOfYearJalaliGregorian.timeInMillis
 
 
@@ -74,6 +74,7 @@ class ShamsiCalendar {
     fun getMonth(): Int {return month}
     fun getWeek(): Int {return week}
     fun getDay(): Int {return day}
+    fun getDayOfWeek(): Int {return dayOfWeek}
     fun getHour(): Int {return hour}
     fun getMinute(): Int {return minute}
     fun getSecond(): Int {return second}

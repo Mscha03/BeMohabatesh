@@ -3,7 +3,6 @@ package com.example.bemohabatesh.data.repository.databasehelper
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import com.example.bemohabatesh.data.model.database.dailyhabit.DailyHabitHistoryDataBaseInformation
 import com.example.bemohabatesh.data.model.database.weeklyhabit.WeeklyHabitDataBaseInformation
 import com.example.bemohabatesh.data.model.database.weeklyhabit.WeeklyHabitHistoryDataBaseInformation
 import com.example.bemohabatesh.data.model.database.weeklyhabit.WeeklyHabitReminderDataBaseInformation

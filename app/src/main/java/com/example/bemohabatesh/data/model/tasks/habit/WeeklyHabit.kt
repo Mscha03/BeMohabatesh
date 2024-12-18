@@ -8,9 +8,10 @@ data class WeeklyHabit(
     override var title: String = "",
     override var description: String = "",
     override var isDone: Int = 0,
-    override var createdAt: ShamsiCalendar = ShamsiCalendar()
+    override var createdAt: ShamsiCalendar = ShamsiCalendar(),
+    var remindDays : ArrayList<ShamsiDetail.Companion.DaysOfWeekNames> = ArrayList()
+
 
 ): DailyHabit(id, title, description, isDone, createdAt){
 
-    var remindDays = ArrayList<ShamsiDetail.Companion.DaysOfWeekNames>()
 }

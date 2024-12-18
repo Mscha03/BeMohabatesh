@@ -6,7 +6,6 @@ import android.database.Cursor
 import com.example.bemohabatesh.data.model.database.dailyhabit.DailyHabitDataBaseInformation
 import com.example.bemohabatesh.data.model.database.dailyhabit.DailyHabitHistoryDataBaseInformation
 import com.example.bemohabatesh.data.model.database.dailyhabit.DailyHabitReminderDataBaseInformation
-import com.example.bemohabatesh.data.model.database.deadlineTask.DeadLineReminderDataBaseInformation
 import com.example.bemohabatesh.data.model.tasks.Task
 import com.example.bemohabatesh.data.model.tasks.habit.DailyHabit
 import com.example.bemohabatesh.data.repository.interfacess.EditableTask
