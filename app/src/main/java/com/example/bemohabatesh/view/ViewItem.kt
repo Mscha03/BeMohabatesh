@@ -1,12 +1,11 @@
 package com.example.bemohabatesh.view
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,7 +18,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,12 +29,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -47,14 +45,16 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bemohabatesh.R
 import com.example.bemohabatesh.data.model.tasks.DateTask
 import com.example.bemohabatesh.data.model.tasks.DeadlineTask
 import com.example.bemohabatesh.data.model.tasks.SimpleTask
+import com.example.bemohabatesh.data.model.tasks.Task
 import com.example.bemohabatesh.data.model.tasks.habit.DailyHabit
+import com.example.bemohabatesh.ui.theme.Purple40
 import com.example.bemohabatesh.ui.theme.TextDescriptionColor
 import com.example.bemohabatesh.ui.theme.TextMainColor
 import com.example.bemohabatesh.ui.theme.dateBoxColor
@@ -68,10 +68,10 @@ import com.example.bemohabatesh.util.time.shamsi.ShamsiDetail
 import com.example.bemohabatesh.util.view.checkBoxColorSelect
 import com.example.bemohabatesh.util.view.habitTitleTextColor
 import com.example.bemohabatesh.util.view.habitTitleTextModifier
-import com.example.bemohabatesh.util.view.multiStateCheckBoxColorSelect
 import com.example.bemohabatesh.util.view.taskTitleTextColor
 import com.example.bemohabatesh.util.view.taskTitleTextModifier
 import com.example.bemohabatesh.view.custom.widget.MultiStateCheckbox
+import com.primex.core.resources
 import kotlinx.coroutines.launch
 
 
@@ -123,7 +123,17 @@ fun MainContent(onOpenDrawer: () -> Unit, screenUI: @Composable () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Navigation Drawer Example") },
+                modifier = Modifier
+                    .clip(RoundedCornerShape(16.dp))
+                    .border(2.dp, Purple40, RoundedCornerShape(16.dp)),
+                colors = TopAppBarColors(
+                    containerColor = Color.White.copy(alpha = 0.9f),
+                    scrolledContainerColor = Color.Black,
+                    navigationIconContentColor = Color.Black,
+                    titleContentColor = Color.Black,
+                    actionIconContentColor = Color.Black
+                ),
+                title = { Text(text = stringResource(R.string.app_name)) },
                 navigationIcon = {
                     IconButton(onClick = onOpenDrawer) {
                         Icon(Icons.Default.Menu, contentDescription = "Open Drawer")
@@ -132,11 +142,10 @@ fun MainContent(onOpenDrawer: () -> Unit, screenUI: @Composable () -> Unit) {
             )
         }
     ) { paddingValues ->
-        Box(
+        Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-            contentAlignment = Alignment.Center
+                .background(color = Color.Transparent)
+                .fillMaxSize(),
         ) {
             screenUI()
         }
@@ -164,7 +173,6 @@ fun DateBox(date: ShamsiCalendar) {
     ) {
 
         Spacer(modifier = Modifier.weight(1f))
-
 
         // date
         Text(
@@ -413,7 +421,7 @@ fun DateTaskViewBox(dateTask: DateTask) {
 
 @Composable
 fun DeadlineTaskViewBox(deadlineTask: DeadlineTask) {
-    if (deadlineTask.subTasks.size != 0){
+    if (deadlineTask.subTasks.size != 0) {
         DeadlineTaskWithSubTaskViewBox(deadlineTask = deadlineTask)
     } else {
         DeadlineTaskWithOutSubTaskViewBox(deadlineTask = deadlineTask)
@@ -469,10 +477,10 @@ fun calculateDoneSubTask(task: DeadlineTask): Float {
 }
 
 @Composable
-private fun DeadlineTaskWithSubTaskViewBox(deadlineTask: DeadlineTask){
+private fun DeadlineTaskWithSubTaskViewBox(deadlineTask: DeadlineTask) {
 
-    var progressInt by remember {mutableFloatStateOf(calculateDoneSubTask(deadlineTask)) }
-    var progressPercent = (progressInt/deadlineTask.subTasks.size)
+    var progressInt by remember { mutableFloatStateOf(calculateDoneSubTask(deadlineTask)) }
+    var progressPercent = (progressInt / deadlineTask.subTasks.size)
     var checkboxState by remember { mutableIntStateOf(deadlineTask.isDone) }
 
 // box top of screen show deadline task
@@ -628,8 +636,9 @@ private fun DeadlineTaskWithSubTaskViewBox(deadlineTask: DeadlineTask){
         }
     }
 }
+
 @Composable
-private fun DeadlineTaskWithOutSubTaskViewBox(deadlineTask: DeadlineTask){
+private fun DeadlineTaskWithOutSubTaskViewBox(deadlineTask: DeadlineTask) {
 
     var checkBoxState by remember {
         mutableIntStateOf(deadlineTask.isDone)
@@ -829,5 +838,19 @@ fun HabitViewBox(habit: DailyHabit) {
             }
         }
 
+    }
+}
+
+
+@Composable
+fun TaskViewBox(tasks: List<Task>) {
+
+    tasks.forEach { task ->
+        when (task) {
+            is SimpleTask -> SimpleTaskViewBox(task)
+            is DateTask -> DateTaskViewBox(task)
+            is DeadlineTask -> DeadlineTaskViewBox(task)
+            is DailyHabit -> HabitViewBox(task)
+        }
     }
 }

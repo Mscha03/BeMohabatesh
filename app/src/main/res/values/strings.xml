@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">BeMohabatesh</string>
+    <string name="fab_text">Add new Task</string>
 
     <string-array name="shamsiMonth">
         <item>Farvardin</item>
