@@ -15,9 +15,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.rounded.Build
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -55,14 +57,15 @@ import com.example.bemohabatesh.data.model.tasks.SimpleTask
 import com.example.bemohabatesh.data.model.tasks.Task
 import com.example.bemohabatesh.data.model.tasks.habit.DailyHabit
 import com.example.bemohabatesh.ui.theme.Purple40
-import com.example.bemohabatesh.ui.theme.TextDescriptionColor
-import com.example.bemohabatesh.ui.theme.TextMainColor
+import com.example.bemohabatesh.ui.theme.TextDescriptionColorLight
+import com.example.bemohabatesh.ui.theme.TextMainColorLight
 import com.example.bemohabatesh.ui.theme.dateBoxColor
 import com.example.bemohabatesh.ui.theme.dateTaskColor
 import com.example.bemohabatesh.ui.theme.deadLinedTaskColor
 import com.example.bemohabatesh.ui.theme.habitTaskColor
 import com.example.bemohabatesh.ui.theme.simpleTaskColor
 import com.example.bemohabatesh.util.convert.BoolInt
+import com.example.bemohabatesh.util.navigationdrawer.changeActivity
 import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 import com.example.bemohabatesh.util.time.shamsi.ShamsiDetail
 import com.example.bemohabatesh.util.view.checkBoxColorSelect
@@ -71,7 +74,6 @@ import com.example.bemohabatesh.util.view.habitTitleTextModifier
 import com.example.bemohabatesh.util.view.taskTitleTextColor
 import com.example.bemohabatesh.util.view.taskTitleTextModifier
 import com.example.bemohabatesh.view.custom.widget.MultiStateCheckbox
-import com.primex.core.resources
 import kotlinx.coroutines.launch
 
 
@@ -102,18 +104,39 @@ fun DrawerContent() {
     Column(
         modifier = Modifier
             .fillMaxHeight()
+            .width(250.dp)
             .background(color = Color.White)
-
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
-            contentDescription = "App Logo",
+            painter = painterResource(id = R.drawable.app_icon),
+            contentDescription = "App Logo"
         )
-        Text("Menu Item 1", modifier = Modifier.padding(8.dp))
-        Text("Menu Item 2", modifier = Modifier.padding(8.dp))
-        Text("Menu Item 3", modifier = Modifier.padding(8.dp))
-        Spacer(modifier = Modifier.height(16.dp))
+        Column (
+            modifier = Modifier
+                .fillMaxHeight()
+                .background(color = Color.White.copy(alpha = 0.7f), shape = RoundedCornerShape(16.dp))
+                .border(width = 2.dp, color = Purple40, shape = RoundedCornerShape(16.dp))
+        ){
+            DrawerItem(thisClass = MainActivity::class.java, destinationClass = MainActivity::class.java)
+        }
+    }
+}
 
+@Composable
+fun DrawerItem(thisClass: Class<*>, destinationClass: Class<*>){
+    val context = LocalContext.current
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp)
+            .clip(shape = RoundedCornerShape(size = 16.dp))
+            .clickable {
+                changeActivity(context = context, thisClass = thisClass, destinationClass = destinationClass)
+            }
+    ){
+        Icon(imageVector = Icons.Rounded.Build, contentDescription = "")
+        Spacer(modifier = Modifier.size(15.dp))
+        Text(text = "Main Activity", fontSize = 16.sp)
     }
 }
 
@@ -179,15 +202,15 @@ fun DateBox(date: ShamsiCalendar) {
             text = "${
                 ShamsiDetail.shamsiWeekDayName(
                     context = LocalContext.current,
-                    dayNumber = date.getDayOfWeek()
+                    dayNumber = date.dayOfWeek
                 )
-            } - " + "${date.getYear()}" +
+            } - " + "${date.year}" +
                     " ${
                         ShamsiDetail.shamsiMonthName(
                             context = LocalContext.current,
-                            monthNumber = date.getMonth()
+                            monthNumber = date.month
                         )
-                    } ${date.getDay()}",
+                    } ${date.day}",
             fontSize = 24.sp
         )
 
@@ -269,7 +292,7 @@ fun SimpleTaskViewBox(simpleTask: SimpleTask) {
                     text = simpleTask.description,
                     modifier = Modifier
                         .padding(horizontal = 10.dp),
-                    color = TextDescriptionColor,
+                    color = TextDescriptionColorLight,
                 )
             }
 
@@ -375,7 +398,7 @@ fun DateTaskViewBox(dateTask: DateTask) {
 
                     modifier = Modifier
                         .padding(horizontal = 10.dp),
-                    color = TextDescriptionColor
+                    color = TextDescriptionColorLight
                 )
             }
 
@@ -387,8 +410,8 @@ fun DateTaskViewBox(dateTask: DateTask) {
 
             //  deadline of task
             Text(
-                text = "${dateTask.deadline.getYear()} / ${dateTask.deadline.getMonth()} / ${dateTask.deadline.getDay()}",
-                color = TextMainColor,
+                text = "${dateTask.deadline.year} / ${dateTask.deadline.month} / ${dateTask.deadline.day}",
+                color = TextMainColorLight,
                 fontSize = 12.sp,
                 modifier = Modifier.padding(vertical = 25.dp, horizontal = 10.dp)
             )
@@ -549,7 +572,7 @@ private fun DeadlineTaskWithSubTaskViewBox(deadlineTask: DeadlineTask) {
 
                                 modifier = Modifier
                                     .padding(horizontal = 10.dp),
-                                color = TextDescriptionColor
+                                color = TextDescriptionColorLight
                             )
 
                             Spacer(modifier = Modifier.size(20.dp))
@@ -564,8 +587,8 @@ private fun DeadlineTaskWithSubTaskViewBox(deadlineTask: DeadlineTask) {
 
                         //  deadline of task
                         Text(
-                            text = "${deadlineTask.deadline.getYear()} / ${deadlineTask.deadline.getMonth()} / ${deadlineTask.deadline.getDay()}",
-                            color = TextMainColor,
+                            text = "${deadlineTask.deadline.year} / ${deadlineTask.deadline.month} / ${deadlineTask.deadline.day}",
+                            color = TextMainColorLight,
                             fontSize = 12.sp,
                             modifier = Modifier.padding(vertical = 25.dp, horizontal = 10.dp)
                         )
@@ -703,7 +726,7 @@ private fun DeadlineTaskWithOutSubTaskViewBox(deadlineTask: DeadlineTask) {
 
                     modifier = Modifier
                         .padding(horizontal = 10.dp),
-                    color = TextDescriptionColor
+                    color = TextDescriptionColorLight
                 )
             }
 
@@ -715,8 +738,8 @@ private fun DeadlineTaskWithOutSubTaskViewBox(deadlineTask: DeadlineTask) {
 
             //  deadline of task
             Text(
-                text = "${deadlineTask.deadline.getYear()} / ${deadlineTask.deadline.getMonth()} / ${deadlineTask.deadline.getDay()}",
-                color = TextMainColor,
+                text = "${deadlineTask.deadline.year} / ${deadlineTask.deadline.month} / ${deadlineTask.deadline.day}",
+                color = TextMainColorLight,
                 fontSize = 12.sp,
                 modifier = Modifier.padding(vertical = 25.dp, horizontal = 10.dp)
             )
@@ -809,7 +832,7 @@ fun HabitViewBox(habit: DailyHabit) {
 
                     modifier = Modifier
                         .padding(horizontal = 10.dp),
-                    color = TextDescriptionColor
+                    color = TextDescriptionColorLight
                 )
             }
 

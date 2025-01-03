@@ -1,5 +1,6 @@
 package com.example.bemohabatesh.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -35,6 +36,8 @@ import com.example.bemohabatesh.data.model.tasks.habit.DailyHabit
 import com.example.bemohabatesh.data.model.tasks.habit.WeeklyHabit
 import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 
+
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +50,43 @@ class MainActivity : ComponentActivity() {
     @Preview(showBackground = true)
     @Composable
     fun MainScreen() {
+
+        Scaffold(
+
+            // fab
+            floatingActionButton = {
+                ExtendedFloatingActionButton(
+                    onClick = {
+                        startActivity(Intent(this, AddTaskActivity::class.java))
+                    }
+                ) {
+                    Icon(imageVector = Icons.Default.Add, contentDescription = "add icon")
+                    Spacer(modifier = Modifier.size(6.dp))
+                    Text(stringResource(R.string.fab_text))
+                }
+            },
+            floatingActionButtonPosition = FabPosition.End
+        ) { _ ->
+
+            // screen Item
+            Column {
+                Column(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    Spacer(Modifier.size(110.dp))
+                    DateBox(ShamsiCalendar())
+                    TaskViewBox(getArray())
+                    Spacer(Modifier.size(100.dp))
+                }
+            }
+
+        }
+    }
+
+    private fun getArray(): ArrayList<Task>{
 
         val simpleTask = SimpleTask(
             title = "simple task",
@@ -98,41 +138,10 @@ class MainActivity : ComponentActivity() {
         tasks.add(dateTask)
         tasks.add(deadlineTask)
         tasks.add(deadlineTask2)
-        tasks.add(deadlineTask2)
-        tasks.add(deadlineTask2)
-        tasks.add(deadlineTask2)
-        tasks.add(deadlineTask2)
+        tasks.add(dailyHabit)
+        tasks.add(dailyHabit2)
 
-
-        Scaffold(
-            floatingActionButton = {
-                ExtendedFloatingActionButton(
-                    onClick = {}
-                ) {
-                    Icon(imageVector = Icons.Default.Add, contentDescription = "add icon")
-                    Spacer(modifier = Modifier.size(6.dp))
-                    Text(stringResource(R.string.fab_text))
-                }
-            },
-            floatingActionButtonPosition = FabPosition.End
-        ) { _ ->
-            Column(
-                modifier = Modifier
-            ) {
-                Column(
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState())
-                ) {
-                    Spacer(Modifier.size(110.dp))
-                    DateBox(ShamsiCalendar())
-                    TaskViewBox(tasks)
-
-                }
-            }
-
-        }
+        return tasks
     }
 }
 
