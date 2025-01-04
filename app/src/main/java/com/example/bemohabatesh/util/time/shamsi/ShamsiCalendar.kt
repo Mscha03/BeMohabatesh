@@ -9,14 +9,22 @@ class ShamsiCalendar {
     //Jalali Calendar With Week
 
     // parameter
-    private var year: Int = 0
-    private var month: Int = 0
-    private var week: Int = 0
-    private var day: Int = 0
-    private var dayOfWeek: Int = 0
-    private var hour: Int = 0
-    private var minute: Int = 0
-    private var second: Int = 0
+    var year: Int = 0
+        private set
+    var month: Int = 0
+        private set
+    var week: Int = 0
+        private set
+    var day: Int = 0
+        private set
+    var dayOfWeek: Int = 0
+        private set
+    var hour: Int = 0
+        private set
+    var minute: Int = 0
+        private set
+    var second: Int = 0
+        private set
 
     constructor() { // تنظیم کردن تاریخ امروز و زمان فعلی برای شی
 
@@ -68,15 +76,8 @@ class ShamsiCalendar {
             return ((daysSinceStartOfYear / 7) + 1).toInt()
         }
 
+
     }
 
-    fun getYear(): Int {return year}
-    fun getMonth(): Int {return month}
-    fun getWeek(): Int {return week}
-    fun getDay(): Int {return day}
-    fun getDayOfWeek(): Int {return dayOfWeek}
-    fun getHour(): Int {return hour}
-    fun getMinute(): Int {return minute}
-    fun getSecond(): Int {return second}
 
 }

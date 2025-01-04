@@ -56,19 +56,19 @@ class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask,
         values.put(WeeklyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, weeklyHabit.description)
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            weeklyHabit.createdAt.getDay()
+            weeklyHabit.createdAt.day
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_WEEK,
-            weeklyHabit.createdAt.getWeek()
+            weeklyHabit.createdAt.week
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            weeklyHabit.createdAt.getMonth()
+            weeklyHabit.createdAt.month
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            weeklyHabit.createdAt.getYear()
+            weeklyHabit.createdAt.year
         )
 
         return taskDb.insert(values)
@@ -93,19 +93,19 @@ class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask,
         values.put(WeeklyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, weeklyHabit.description)
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            weeklyHabit.createdAt.getDay()
+            weeklyHabit.createdAt.day
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            weeklyHabit.createdAt.getMonth()
+            weeklyHabit.createdAt.month
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_WEEK,
-            weeklyHabit.createdAt.getWeek()
+            weeklyHabit.createdAt.week
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            weeklyHabit.createdAt.getYear()
+            weeklyHabit.createdAt.year
         )
 
         return taskDb.update(values, WeeklyHabitDataBaseInformation.COLUMN_ID, weeklyHabit.id)
@@ -119,11 +119,11 @@ class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask,
         val values = ContentValues()
 
         values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month)
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.minute)
         remindDb.insert(values)
     }
 
@@ -138,11 +138,11 @@ class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask,
         val values = ContentValues()
 
         values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month)
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(WeeklyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.minute)
         remindDb.update(
             values,
             WeeklyHabitReminderDataBaseInformation.COLUMN_TASK_ID,
@@ -158,10 +158,10 @@ class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask,
         days.forEach { day ->
             val values = ContentValues()
             values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_ID, mainTaskId)
-            values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.getYear())
-            values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_WEEK, day.getWeek())
-            values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.getMonth())
-            values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.getDay())
+            values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.year)
+            values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_WEEK, day.week)
+            values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.month)
+            values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.day)
             values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_IS_DONE, 0)
 
             historyDb.insert(values)
@@ -175,10 +175,10 @@ class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask,
     override fun updateTaskHistory(mainTaskId: Int, day: ShamsiCalendar, doneState: Int) {
         val values = ContentValues()
         values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_ID, mainTaskId)
-        values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.getYear())
-        values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.getMonth())
-        values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_WEEK, day.getMonth())
-        values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.getDay())
+        values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.year)
+        values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.month)
+        values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_WEEK, day.week)
+        values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.day)
         values.put(WeeklyHabitHistoryDataBaseInformation.COLUMN_DATE_IS_DONE, doneState)
 
         historyDb.update(values, WeeklyHabitHistoryDataBaseInformation.COLUMN_ID, mainTaskId)

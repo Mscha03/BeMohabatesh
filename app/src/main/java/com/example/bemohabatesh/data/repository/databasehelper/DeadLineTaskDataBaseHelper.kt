@@ -60,28 +60,30 @@ class DeadLineTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask
         values.put(DeadLineDataBaseInformation.COLUMN_TASK_IS_DONE, deadlineTask.isDone)
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            deadlineTask.createdAt.getDay()
+            deadlineTask.createdAt.day
         )
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            deadlineTask.createdAt.getMonth()
+            deadlineTask.createdAt.month
+
         )
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            deadlineTask.createdAt.getYear()
+            deadlineTask.createdAt.year
         )
 
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_DEADLINE_DAY,
-            deadlineTask.deadline.getDay()
+            deadlineTask.deadline.day
         )
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_DEADLINE_MONTH,
-            deadlineTask.deadline.getMonth()
+            deadlineTask.deadline.month
+
         )
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_DEADLINE_YEAR,
-            deadlineTask.deadline.getYear()
+            deadlineTask.deadline.year
         )
 
         return taskDb.insert(values)
@@ -107,28 +109,30 @@ class DeadLineTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask
         values.put(DeadLineDataBaseInformation.COLUMN_TASK_IS_DONE, deadlineTask.isDone)
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            deadlineTask.createdAt.getDay()
+            deadlineTask.createdAt.day
         )
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            deadlineTask.createdAt.getMonth()
+            deadlineTask.createdAt.month
+
         )
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            deadlineTask.createdAt.getYear()
+            deadlineTask.createdAt.year
         )
 
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_DEADLINE_DAY,
-            deadlineTask.deadline.getDay()
+            deadlineTask.deadline.day
         )
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_DEADLINE_MONTH,
-            deadlineTask.deadline.getMonth()
+            deadlineTask.deadline.month
+
         )
         values.put(
             DeadLineDataBaseInformation.COLUMN_TASK_DEADLINE_YEAR,
-            deadlineTask.deadline.getYear()
+            deadlineTask.deadline.year
         )
 
         return taskDb.update(values, DeadLineDataBaseInformation.COLUMN_ID, deadlineTask.id)
@@ -176,11 +180,12 @@ class DeadLineTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask
         val values = ContentValues()
 
         values.put(DeadLineReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month
+        )
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.minute)
         remindDb.insert(values)
     }
 
@@ -195,11 +200,12 @@ class DeadLineTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask
         val values = ContentValues()
 
         values.put(DeadLineReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month
+        )
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(DeadLineReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.minute)
         remindDb.update(
             values,
             DeadLineReminderDataBaseInformation.COLUMN_TASK_ID,

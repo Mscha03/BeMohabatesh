@@ -9,8 +9,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.example.bemohabatesh.ui.theme.CheckboxDoneColor
 import com.example.bemohabatesh.ui.theme.CheckboxUnDoneColor
-import com.example.bemohabatesh.ui.theme.TextDescriptionColor
-import com.example.bemohabatesh.ui.theme.TextMainColor
+import com.example.bemohabatesh.ui.theme.TextDescriptionColorLight
+import com.example.bemohabatesh.ui.theme.TextMainColorLight
 import com.example.bemohabatesh.ui.theme.habitAverageColor
 import com.example.bemohabatesh.ui.theme.habitBadColor
 import com.example.bemohabatesh.ui.theme.habitErrorColor
@@ -52,17 +52,17 @@ fun taskTitleTextModifier(isDone: Int): Modifier {
 
 fun taskTitleTextColor(isDone: Int): Color {
     return if (BoolInt.intToBool(isDone)) {
-        TextDescriptionColor
+        TextDescriptionColorLight
     } else{
-        TextMainColor
+        TextMainColorLight
     }
 }
 
 fun habitTitleTextColor(isDone: Int): Color {
  return if (isDone == 3){
-     TextDescriptionColor
+     TextDescriptionColorLight
  }else{
-     TextMainColor
+     TextMainColorLight
  }
 }
 

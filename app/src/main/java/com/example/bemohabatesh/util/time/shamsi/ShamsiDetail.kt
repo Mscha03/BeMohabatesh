@@ -38,7 +38,7 @@ class ShamsiDetail {
 
         fun shamsiWeekDayName(context: Context, dayNumber: Int): String?{
             val dayName = context.resources.getStringArray(R.array.shamsiWeekDay)
-            return if (dayNumber in 0..7) dayName[dayNumber] else null
+            return if (dayNumber in 1..7) dayName[dayNumber%7] else null
         }
 
 

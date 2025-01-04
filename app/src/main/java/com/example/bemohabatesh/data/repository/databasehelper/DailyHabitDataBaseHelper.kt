@@ -56,15 +56,15 @@ class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, 
         values.put(DailyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, dailyHabit.description)
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            dailyHabit.createdAt.getDay()
+            dailyHabit.createdAt.day
         )
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            dailyHabit.createdAt.getMonth()
+            dailyHabit.createdAt.month
         )
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            dailyHabit.createdAt.getYear()
+            dailyHabit.createdAt.year
         )
 
         return taskDb.insert(values)
@@ -89,15 +89,15 @@ class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, 
         values.put(DailyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, dailyHabit.description)
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            dailyHabit.createdAt.getDay()
+            dailyHabit.createdAt.day
         )
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            dailyHabit.createdAt.getMonth()
+            dailyHabit.createdAt.month
         )
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            dailyHabit.createdAt.getYear()
+            dailyHabit.createdAt.year
         )
 
         return taskDb.update(values, DailyHabitDataBaseInformation.COLUMN_ID, dailyHabit.id)
@@ -111,11 +111,11 @@ class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, 
         val values = ContentValues()
 
         values.put(DailyHabitReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month)
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.minute)
         remindDb.insert(values)
     }
 
@@ -130,11 +130,11 @@ class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, 
         val values = ContentValues()
 
         values.put(DailyHabitReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month)
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(DailyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.minute)
         remindDb.update(
             values,
             DailyHabitReminderDataBaseInformation.COLUMN_TASK_ID,
@@ -150,9 +150,9 @@ class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, 
         days.forEach { day ->
             val values = ContentValues()
             values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_ID, mainTaskId)
-            values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.getYear())
-            values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.getMonth())
-            values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.getDay())
+            values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.year)
+            values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.month)
+            values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.day)
             values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_IS_DONE, 0)
 
             historyDb.insert(values)
@@ -166,9 +166,9 @@ class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, 
     override fun updateTaskHistory(mainTaskId: Int, day: ShamsiCalendar, doneState: Int) {
         val values = ContentValues()
         values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_ID, mainTaskId)
-        values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.getYear())
-        values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.getMonth())
-        values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.getDay())
+        values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.year)
+        values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.month)
+        values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.day)
         values.put(DailyHabitHistoryDataBaseInformation.COLUMN_DATE_IS_DONE, doneState)
 
         historyDb.update(values, DailyHabitHistoryDataBaseInformation.COLUMN_ID, mainTaskId)

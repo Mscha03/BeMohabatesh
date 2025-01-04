@@ -713,7 +713,7 @@ private fun DeadlineTaskWithOutSubTaskViewBox(deadlineTask: DeadlineTask) {
                     fontSize = 20.sp,
                     modifier = taskTitleTextModifier(checkBoxState)
                         .clickable(onClick = {
-                            TODO("قابلیت ویرایش تسک اصلی")
+//                            TODO("قابلیت ویرایش تسک اصلی")
                         })
                 )
 

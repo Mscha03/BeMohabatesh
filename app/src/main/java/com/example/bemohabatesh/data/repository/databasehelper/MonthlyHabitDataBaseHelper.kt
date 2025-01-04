@@ -57,15 +57,15 @@ class MonthlyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask
         values.put(MonthlyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, weeklyHabit.description)
         values.put(
             MonthlyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            weeklyHabit.createdAt.getDay()
+            weeklyHabit.createdAt.day
         )
         values.put(
             MonthlyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            weeklyHabit.createdAt.getMonth()
+            weeklyHabit.createdAt.month
         )
         values.put(
             MonthlyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            weeklyHabit.createdAt.getYear()
+            weeklyHabit.createdAt.year
         )
 
         return taskDb.insert(values)
@@ -90,16 +90,16 @@ class MonthlyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask
         values.put(MonthlyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, weeklyHabit.description)
         values.put(
             MonthlyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            weeklyHabit.createdAt.getDay()
+            weeklyHabit.createdAt.day
         )
         values.put(
             MonthlyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            weeklyHabit.createdAt.getMonth()
+            weeklyHabit.createdAt.month
         )
 
         values.put(
             MonthlyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            weeklyHabit.createdAt.getYear()
+            weeklyHabit.createdAt.year
         )
 
         return taskDb.update(values, MonthlyHabitDataBaseInformation.COLUMN_ID, weeklyHabit.id)
@@ -113,11 +113,11 @@ class MonthlyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask
         val values = ContentValues()
 
         values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month)
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.minute)
         remindDb.insert(values)
     }
 
@@ -132,11 +132,11 @@ class MonthlyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask
         val values = ContentValues()
 
         values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month)
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(MonthlyHabitReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.minute)
         remindDb.update(
             values,
             MonthlyHabitReminderDataBaseInformation.COLUMN_TASK_ID,
@@ -152,9 +152,9 @@ class MonthlyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask
         days.forEach { day ->
             val values = ContentValues()
             values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_ID, mainTaskId)
-            values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.getYear())
-            values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.getMonth())
-            values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.getDay())
+            values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.year)
+            values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.month)
+            values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.day)
             values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_IS_DONE, 0)
 
             historyDb.insert(values)
@@ -168,9 +168,9 @@ class MonthlyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask
     override fun updateTaskHistory(mainTaskId: Int, day: ShamsiCalendar, doneState: Int) {
         val values = ContentValues()
         values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_ID, mainTaskId)
-        values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.getYear())
-        values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.getMonth())
-        values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.getDay())
+        values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_YEAR, day.year)
+        values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_MONTH, day.month)
+        values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_DAY, day.day)
         values.put(MonthlyHabitHistoryDataBaseInformation.COLUMN_DATE_IS_DONE, doneState)
 
         historyDb.update(values, MonthlyHabitHistoryDataBaseInformation.COLUMN_ID, mainTaskId)

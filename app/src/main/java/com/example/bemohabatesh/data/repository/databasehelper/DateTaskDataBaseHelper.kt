@@ -41,13 +41,13 @@ class DateTaskDataBaseHelper(context: Context): EditableTask, RemindingTask {
         values.put(DateTaskDataBaseInformation.COLUMN_TASK_TITLE, dateTask.title)
         values.put(DateTaskDataBaseInformation.COLUMN_TASK_DESCRIPTION, dateTask.description)
         values.put(DateTaskDataBaseInformation.COLUMN_TASK_IS_DONE, dateTask.isDone)
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_DAY, dateTask.createdAt.getDay())
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_MONTH, dateTask.createdAt.getMonth())
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_YEAR, dateTask.createdAt.getYear())
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_DAY, dateTask.createdAt.day)
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_MONTH, dateTask.createdAt.month)
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_YEAR, dateTask.createdAt.year)
 
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_DAY, dateTask.deadline.getDay())
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_MONTH, dateTask.deadline.getMonth())
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_YEAR, dateTask.deadline.getYear())
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_DAY, dateTask.deadline.day)
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_MONTH, dateTask.deadline.month)
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_YEAR, dateTask.deadline.year)
 
         return taskDb.insert(values)
     }
@@ -70,13 +70,13 @@ class DateTaskDataBaseHelper(context: Context): EditableTask, RemindingTask {
         values.put(DateTaskDataBaseInformation.COLUMN_TASK_TITLE, dateTask.title)
         values.put(DateTaskDataBaseInformation.COLUMN_TASK_DESCRIPTION, dateTask.description)
         values.put(DateTaskDataBaseInformation.COLUMN_TASK_IS_DONE, dateTask.isDone)
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_DAY, dateTask.createdAt.getDay())
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_MONTH, dateTask.createdAt.getMonth())
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_YEAR, dateTask.createdAt.getYear())
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_DAY, dateTask.createdAt.day)
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_MONTH, dateTask.createdAt.month)
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_CREATE_YEAR, dateTask.createdAt.year)
 
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_DAY, dateTask.deadline.getDay())
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_MONTH, dateTask.deadline.getMonth())
-        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_YEAR, dateTask.deadline.getYear())
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_DAY, dateTask.deadline.day)
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_MONTH, dateTask.deadline.month)
+        values.put(DateTaskDataBaseInformation.COLUMN_TASK_DEADLINE_YEAR, dateTask.deadline.year)
 
         return taskDb.update(values, DateTaskDataBaseInformation.COLUMN_ID, dateTask.id)
 
@@ -90,11 +90,11 @@ class DateTaskDataBaseHelper(context: Context): EditableTask, RemindingTask {
         val values = ContentValues()
 
         values.put(DateTaskReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month)
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.month)
         remindDb.insert(values)
     }
 
@@ -109,11 +109,11 @@ class DateTaskDataBaseHelper(context: Context): EditableTask, RemindingTask {
         val values = ContentValues()
 
         values.put(DateTaskReminderDataBaseInformation.COLUMN_TASK_ID, mainTaskId)
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.getYear())
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.getMonth())
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_DAY, date.getDay())
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.getHour())
-        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.getMinute())
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_YEAR, date.year)
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_MONTH, date.month)
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_DAY, date.day)
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_HOUR, date.hour)
+        values.put(DateTaskReminderDataBaseInformation.COLUMN_REMIND_MINUTE, date.month)
         remindDb.update(
             values,
             DateTaskReminderDataBaseInformation.COLUMN_TASK_ID,
