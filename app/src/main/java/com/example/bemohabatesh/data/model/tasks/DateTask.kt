@@ -11,6 +11,10 @@ data class DateTask(
     var deadline: ShamsiCalendar = ShamsiCalendar()
 
 
-) : Task(id, title, description, isDone, createdAt) {
-
-}
+) : Task(
+    id = id,
+    title = title,
+    description = description,
+    isDone = isDone,
+    createdDay = createdAt
+)

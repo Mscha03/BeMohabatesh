@@ -1,6 +1,7 @@
 package com.example.bemohabatesh.data.model.tasks.habit
 
 import com.example.bemohabatesh.data.model.tasks.Task
+import com.example.bemohabatesh.data.model.tasks.TaskBase
 import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
 
 open class DailyHabit(
@@ -10,4 +11,9 @@ open class DailyHabit(
     open var isDone: Int = 0,
     open var createdAt: ShamsiCalendar = ShamsiCalendar()
 
-) : Task(id, title, description, isDone, createdAt)
+) : TaskBase(
+    id = id,
+    title = title,
+    description = description,
+    createdDay = createdAt
+)

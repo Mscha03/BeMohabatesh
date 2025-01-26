@@ -11,7 +11,10 @@ data class DeadlineTask(
     var deadline: ShamsiCalendar = ShamsiCalendar(),
     var subTasks: ArrayList<SimpleTask> = ArrayList<SimpleTask>(),
 
-    ) : Task(id, title, description, isDone, createdAt) {
-
-
-}
+    ): Task (
+        id = id,
+        title = title,
+        description = description,
+        isDone = isDone,
+        createdDay = createdAt
+    )

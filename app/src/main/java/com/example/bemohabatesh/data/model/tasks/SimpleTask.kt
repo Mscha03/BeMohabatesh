@@ -9,6 +9,10 @@ data class SimpleTask(
      var isDone: Int = 0,
      var createdAt: ShamsiCalendar = ShamsiCalendar()
 
-): Task(id, title, description, isDone, createdAt){
-
-}
+): Task(
+     id = id,
+     title = title,
+     description = description,
+     isDone = isDone,
+     createdDay = createdAt
+)
