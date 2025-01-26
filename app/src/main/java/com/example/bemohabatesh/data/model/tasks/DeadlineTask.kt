@@ -9,12 +9,13 @@ data class DeadlineTask(
     var isDone: Int = 0,
     var createdAt: ShamsiCalendar = ShamsiCalendar(),
     var deadline: ShamsiCalendar = ShamsiCalendar(),
-    var subTasks: ArrayList<SimpleTask> = ArrayList<SimpleTask>(),
+    var subTasks: ArrayList<SimpleTask> = ArrayList(),
 
     ): Task (
         id = id,
         title = title,
         description = description,
         isDone = isDone,
-        createdDay = createdAt
+        createdDay = createdAt,
+        subTasks = subTasks
     )

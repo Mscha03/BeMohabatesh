@@ -8,7 +8,8 @@ import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
         private var description: String,
         private var createdDay: ShamsiCalendar,
         private var isDone: Int,
-    ): TaskBase(
+        private var subTasks: ArrayList<SimpleTask>
+        ): TaskBase(
         id = id,
         title = title,
         description = description,

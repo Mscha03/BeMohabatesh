@@ -7,12 +7,14 @@ data class SimpleTask(
      var title: String = "",
      var description: String = "",
      var isDone: Int = 0,
-     var createdAt: ShamsiCalendar = ShamsiCalendar()
+     var createdAt: ShamsiCalendar = ShamsiCalendar(),
+     var subTasks: ArrayList<SimpleTask> = ArrayList(),
 
-): Task(
-     id = id,
-     title = title,
-     description = description,
-     isDone = isDone,
-     createdDay = createdAt
-)
+     ): Task(
+          id = id,
+          title = title,
+          description = description,
+          isDone = isDone,
+          createdDay = createdAt,
+          subTasks = subTasks
+     )
