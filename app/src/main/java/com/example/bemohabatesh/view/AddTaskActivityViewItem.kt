@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -58,11 +59,11 @@ import com.example.bemohabatesh.util.time.shamsi.ShamsiDetail
 import java.time.LocalTime
 
 @Composable
-fun TitleScreenTextFiled() {
+fun TitleScreenTextFiled(modifier: Modifier = Modifier.padding(10.dp)) {
     // Title
     Text(
-        modifier = Modifier.padding(10.dp),
-        text = "Add Task",
+        modifier = modifier,
+        text = "Add your task",
         style = MaterialTheme.typography.headlineLarge,
         textAlign = TextAlign.Center,
     )
@@ -85,6 +86,7 @@ fun taskTitleTextFiled(defaultText: String = ""): String {
 
     return taskTitle
 }
+
 
 @Composable
 fun taskDescription(defaultText: String = ""): String {
@@ -166,9 +168,9 @@ fun selectDeadLine(): ShamsiCalendar {
         // Text field show date
         TextField(
             modifier = Modifier
-                .width(200.dp)
+                .width(230.dp)
                 .padding(vertical = 6.dp),
-            value = "تاریخ: ${specialDay.day} ${
+            value = "Date: ${specialDay.day} ${
                 ShamsiDetail.shamsiMonthName(
                     monthNumber = specialDay.month,
                     context = LocalContext.current
@@ -184,7 +186,8 @@ fun selectDeadLine(): ShamsiCalendar {
             shape = RoundedCornerShape(6.dp),
             modifier = Modifier
                 .padding(5.dp)
-                .width(200.dp),
+                .width(150.dp)
+                .height(60.dp),
             onClick = { openDialog.value = true }
         ) {
             Text("Choose Date")
@@ -482,7 +485,9 @@ fun selectHabitType(): TaskType.HabitType {
                     .menuAnchor()
                     .padding(vertical = 5.dp)
                     .fillMaxWidth(),
-                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedTaskType) }
+                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedTaskType) },
+                colors = TextFieldDefaults.colors(unfocusedContainerColor = Color.Gray.copy(alpha = 0.1f))
+
             )
 
             ExposedDropdownMenu(
@@ -517,13 +522,14 @@ fun selectTime(): LocalTime? {
     ) {
 
         // Text field show date
-        OutlinedTextField(
+        TextField(
             modifier = Modifier
-                .width(200.dp)
+                .width(230.dp)
                 .padding(vertical = 6.dp),
             value = "${time.hour}:${time.minute}",
             onValueChange = {},
             readOnly = true,
+            colors = TextFieldDefaults.colors(unfocusedContainerColor = Color.Gray.copy(alpha = 0.1f))
         )
 
         // button select date
@@ -531,7 +537,8 @@ fun selectTime(): LocalTime? {
             shape = RoundedCornerShape(6.dp),
             modifier = Modifier
                 .padding(5.dp)
-                .width(200.dp),
+                .width(150.dp)
+                .height(60.dp),
             onClick = {
 //                    timeDialogState.show()
             }

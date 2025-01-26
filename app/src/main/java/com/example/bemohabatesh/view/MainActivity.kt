@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
             Column {
                 Column(
                     modifier = Modifier
-                        .padding(16.dp)
+                        .padding(horizontal = 16.dp)
                         .fillMaxSize()
                         .verticalScroll(rememberScrollState())
                 ) {
@@ -89,57 +89,51 @@ class MainActivity : ComponentActivity() {
     private fun getArray(): ArrayList<Task>{
 
         val simpleTask = SimpleTask(
-            title = "simple task",
+            title = "تحویل کتاب های کتابخونه",
             description = "description of simple task",
             isDone = 1
         )
 
         val dateTask = DateTask(
-            title = "date task",
+            title = "الکامپ رشت",
             description = "description of date task",
             isDone = 1
         )
 
         val deadlineTask = DeadlineTask(
-            title = "deadline task",
+            title = "ارائه روش پژوهش",
             description = "description of deadline task",
             isDone = 0,
             deadline = ShamsiCalendar(),
             subTasks = arrayOf(
-                SimpleTask(title = "sub 1", isDone = 0),
-                SimpleTask(title = "sub 2", isDone = 0),
-                SimpleTask(title = "sub 3", isDone = 0),
-                SimpleTask(title = "sub 3", isDone = 0),
+                SimpleTask(title = "پیدا کردن مقاله", isDone = 1),
+                SimpleTask(title = "خوندن مقاله ها و خلاصه نویسی", isDone = 1),
+                SimpleTask(title = "نوشتن گزارش", isDone = 1),
+                SimpleTask(title = "ساختن پاورپویینت", isDone = 1),
+                SimpleTask(title = "ارائه دادن", isDone = 0),
             ).toCollection(ArrayList())
         )
 
         val deadlineTask2 = DeadlineTask(
-            title = "deadline2 task",
-            description = "description of deadline 2 task",
+            title = "ددلاین بدون ساب تسک",
+            description = " مثلا یه چیزی ",
             isDone = 0,
-            deadline = ShamsiCalendar()
         )
 
-        val dailyHabit = DailyHabit(
-            title = "daily habit",
-            description = "description of daily habit",
-            isDone = 3,
-        )
-
-        val dailyHabit2 = WeeklyHabit(
-            title = "weekly habit",
+        val dailyHabit = WeeklyHabit(
+            title = "مطالعه روزانه",
             description = "description of weekly habit",
             isDone = 1
         )
 
         val tasks = ArrayList<Task>()
 
-        tasks.add(simpleTask)
-        tasks.add(dateTask)
         tasks.add(deadlineTask)
-        tasks.add(deadlineTask2)
         tasks.add(dailyHabit)
-        tasks.add(dailyHabit2)
+        tasks.add(dateTask)
+        tasks.add(dateTask)
+        tasks.add(deadlineTask2)
+        tasks.add(simpleTask)
 
         return tasks
     }

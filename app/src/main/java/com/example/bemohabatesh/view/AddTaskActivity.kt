@@ -73,27 +73,33 @@ class AddTaskActivity : ComponentActivity() {
 
             Column(
                 modifier = Modifier
-                    .padding(all = 16.dp)
-                    .fillMaxSize()
-                    .border(
-                        width = 5.dp,
-                        color = borderColor,
-                        shape = RoundedCornerShape(25.dp)
-                    ),
+                    .fillMaxSize(),
+//                    .border(
+//                        width = 5.dp,
+//                        color = borderColor,
+//                        shape = RoundedCornerShape(25.dp)
+//                    ),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
 
-                // notch space
-                Spacer(modifier = Modifier.size(30.dp))
-
-                Row {
+                Row (
+                    modifier = Modifier
+                        .border(
+                        width = 2.dp,
+                        color = borderColor,
+                        shape = RoundedCornerShape(25.dp)
+                    ),
+                ){
                     // page title
-                    TitleScreenTextFiled()
+                    TitleScreenTextFiled(
+                        modifier = Modifier
+                            .padding(start = 20.dp, top = 50.dp, bottom = 20.dp)
+                    )
 
                     Spacer(modifier = Modifier.weight(0.5f))
 
                     Button(
-                        modifier = Modifier.padding(10.dp),
+                        modifier = Modifier.padding(top = 50.dp, end = 20.dp, bottom = 20.dp),
                         shape = RoundedCornerShape(10.dp),
                         onClick = {}
                     ) {
@@ -120,6 +126,7 @@ class AddTaskActivity : ComponentActivity() {
 
 
                         when (selectedTaskType) {
+
 
                             TaskType.SimpleTask -> {
                                 borderColor = simpleTaskColor
@@ -150,6 +157,10 @@ class AddTaskActivity : ComponentActivity() {
                             }
 
                             TaskType.Habit -> {
+
+                                Column {
+                                    Text("habit type")
+                                }
 
                                 borderColor = habitTaskColor
 
@@ -197,6 +208,7 @@ class AddTaskActivity : ComponentActivity() {
             }
         }
     }
+
 
 
 //    @Preview
