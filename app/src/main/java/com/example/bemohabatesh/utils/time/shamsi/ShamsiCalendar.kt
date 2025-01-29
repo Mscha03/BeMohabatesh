@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.util.time.shamsi
+package org.example.ui.screens.utils.time.shamsi
 
 import ir.huri.jcal.JalaliCalendar
 import java.time.LocalTime
@@ -41,15 +41,15 @@ class ShamsiCalendar {
         this.second = time.second
     }
 
-    constructor(year: Int, month: Int, week: Int, day: Int) { // اضافه کردن تاریخ وارد شده بدون زمان
+    constructor(year: Int, month: Int, day: Int) { // اضافه کردن تاریخ وارد شده بدون زمان
         this.year = year
         this.month = month
-        this.week = week
+        this.week = weekOfYear(JalaliCalendar(year, month, day))
         this.day = day
     }
 
-    constructor(year: Int, month: Int, week: Int, day: Int, hour: Int, min: Int, sec:Int)
-            : this(year, month, week, day){ // اضافه کردن تاریخ و زمان وارد شده
+    constructor(year: Int, month: Int, day: Int, hour: Int, min: Int, sec:Int)
+            : this(year, month, day){ // اضافه کردن تاریخ و زمان وارد شده
         this.hour = hour
         this.minute = min
         this.second = sec

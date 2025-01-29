@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.util.time.shamsi
+package com.example.bemohabatesh.utils.time.shamsi
 
 import android.content.Context
 import com.example.bemohabatesh.R
