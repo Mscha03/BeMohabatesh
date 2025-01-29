@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.view
+package com.example.bemohabatesh.ui.view
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -33,7 +32,6 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -52,10 +50,9 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.bemohabatesh.R
-import com.example.bemohabatesh.data.model.tasks.SimpleTask
 import com.example.bemohabatesh.data.model.tasks.TaskType
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
-import com.example.bemohabatesh.util.time.shamsi.ShamsiDetail
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiDetail
 import java.time.LocalTime
 
 @Composable

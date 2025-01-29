@@ -11,7 +11,7 @@ import com.example.bemohabatesh.data.model.tasks.habit.WeeklyHabit
 import com.example.bemohabatesh.data.repository.interfacess.EditableTask
 import com.example.bemohabatesh.data.repository.interfacess.HistoricalTask
 import com.example.bemohabatesh.data.repository.interfacess.RemindingTask
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
 
 class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, HistoricalTask {
 
@@ -56,19 +56,19 @@ class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask,
         values.put(WeeklyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, weeklyHabit.description)
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            weeklyHabit.createdAt.day
+            weeklyHabit.createdDay.day
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_WEEK,
-            weeklyHabit.createdAt.week
+            weeklyHabit.createdDay.week
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            weeklyHabit.createdAt.month
+            weeklyHabit.createdDay.month
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            weeklyHabit.createdAt.year
+            weeklyHabit.createdDay.year
         )
 
         return taskDb.insert(values)
@@ -93,19 +93,19 @@ class WeeklyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask,
         values.put(WeeklyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, weeklyHabit.description)
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            weeklyHabit.createdAt.day
+            weeklyHabit.createdDay.day
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            weeklyHabit.createdAt.month
+            weeklyHabit.createdDay.month
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_WEEK,
-            weeklyHabit.createdAt.week
+            weeklyHabit.createdDay.week
         )
         values.put(
             WeeklyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            weeklyHabit.createdAt.year
+            weeklyHabit.createdDay.year
         )
 
         return taskDb.update(values, WeeklyHabitDataBaseInformation.COLUMN_ID, weeklyHabit.id)

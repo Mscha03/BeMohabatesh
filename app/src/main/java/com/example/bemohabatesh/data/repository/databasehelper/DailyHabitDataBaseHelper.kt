@@ -11,7 +11,7 @@ import com.example.bemohabatesh.data.model.tasks.habit.DailyHabit
 import com.example.bemohabatesh.data.repository.interfacess.EditableTask
 import com.example.bemohabatesh.data.repository.interfacess.HistoricalTask
 import com.example.bemohabatesh.data.repository.interfacess.RemindingTask
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
 
 class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, HistoricalTask {
 
@@ -56,15 +56,15 @@ class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, 
         values.put(DailyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, dailyHabit.description)
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            dailyHabit.createdAt.day
+            dailyHabit.createdDay.day
         )
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            dailyHabit.createdAt.month
+            dailyHabit.createdDay.month
         )
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            dailyHabit.createdAt.year
+            dailyHabit.createdDay.year
         )
 
         return taskDb.insert(values)
@@ -89,15 +89,15 @@ class DailyHabitDataBaseHelper(context: Context) : EditableTask, RemindingTask, 
         values.put(DailyHabitDataBaseInformation.COLUMN_TASK_DESCRIPTION, dailyHabit.description)
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_DAY,
-            dailyHabit.createdAt.day
+            dailyHabit.createdDay.day
         )
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_MONTH,
-            dailyHabit.createdAt.month
+            dailyHabit.createdDay.month
         )
         values.put(
             DailyHabitDataBaseInformation.COLUMN_TASK_CREATE_YEAR,
-            dailyHabit.createdAt.year
+            dailyHabit.createdDay.year
         )
 
         return taskDb.update(values, DailyHabitDataBaseInformation.COLUMN_ID, dailyHabit.id)

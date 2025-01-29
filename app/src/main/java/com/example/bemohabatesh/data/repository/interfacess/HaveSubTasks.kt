@@ -1,7 +1,6 @@
 package com.example.bemohabatesh.data.repository.interfacess
 
 import android.database.Cursor
-import com.example.bemohabatesh.data.model.tasks.SimpleTask
 import com.example.bemohabatesh.data.model.tasks.Task
 
 interface HaveSubTasks {

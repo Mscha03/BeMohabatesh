@@ -5,11 +5,10 @@ import android.content.Context
 import android.database.Cursor
 import com.example.bemohabatesh.data.model.database.simpletask.SimpleTaskDataBaseInformation
 import com.example.bemohabatesh.data.model.database.simpletask.SimpleTaskReminderDataBaseInformation
-import com.example.bemohabatesh.data.model.tasks.SimpleTask
 import com.example.bemohabatesh.data.model.tasks.Task
 import com.example.bemohabatesh.data.repository.interfacess.EditableTask
 import com.example.bemohabatesh.data.repository.interfacess.RemindingTask
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
 
 
 class SimpleTaskDataBaseHelper(context: Context) : EditableTask, RemindingTask {

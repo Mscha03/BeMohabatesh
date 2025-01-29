@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.view
+package com.example.bemohabatesh.ui.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,25 +16,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bemohabatesh.R
-import com.example.bemohabatesh.data.model.tasks.DateTask
-import com.example.bemohabatesh.data.model.tasks.DeadlineTask
-import com.example.bemohabatesh.data.model.tasks.SimpleTask
-import com.example.bemohabatesh.data.model.tasks.Task
-import com.example.bemohabatesh.data.model.tasks.habit.DailyHabit
-import com.example.bemohabatesh.data.model.tasks.habit.WeeklyHabit
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
 
 
 
@@ -86,57 +77,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun getArray(): ArrayList<Task>{
 
-        val simpleTask = SimpleTask(
-            title = "تحویل کتاب های کتابخونه",
-            description = "description of simple task",
-            isDone = 1
-        )
-
-        val dateTask = DateTask(
-            title = "الکامپ رشت",
-            description = "description of date task",
-            isDone = 1
-        )
-
-        val deadlineTask = DeadlineTask(
-            title = "ارائه روش پژوهش",
-            description = "description of deadline task",
-            isDone = 0,
-            deadline = ShamsiCalendar(),
-            subTasks = arrayOf(
-                SimpleTask(title = "پیدا کردن مقاله", isDone = 1),
-                SimpleTask(title = "خوندن مقاله ها و خلاصه نویسی", isDone = 1),
-                SimpleTask(title = "نوشتن گزارش", isDone = 1),
-                SimpleTask(title = "ساختن پاورپویینت", isDone = 1),
-                SimpleTask(title = "ارائه دادن", isDone = 0),
-            ).toCollection(ArrayList())
-        )
-
-        val deadlineTask2 = DeadlineTask(
-            title = "ددلاین بدون ساب تسک",
-            description = " مثلا یه چیزی ",
-            isDone = 0,
-        )
-
-        val dailyHabit = WeeklyHabit(
-            title = "مطالعه روزانه",
-            description = "description of weekly habit",
-            isDone = 1
-        )
-
-        val tasks = ArrayList<Task>()
-
-        tasks.add(deadlineTask)
-        tasks.add(dailyHabit)
-        tasks.add(dateTask)
-        tasks.add(dateTask)
-        tasks.add(deadlineTask2)
-        tasks.add(simpleTask)
-
-        return tasks
-    }
 }
 
 

@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.view
+package com.example.bemohabatesh.ui.view
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -51,9 +51,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bemohabatesh.R
-import com.example.bemohabatesh.data.model.tasks.DateTask
-import com.example.bemohabatesh.data.model.tasks.DeadlineTask
-import com.example.bemohabatesh.data.model.tasks.SimpleTask
 import com.example.bemohabatesh.data.model.tasks.Task
 import com.example.bemohabatesh.data.model.tasks.habit.DailyHabit
 import com.example.bemohabatesh.ui.theme.Purple40
@@ -64,16 +61,16 @@ import com.example.bemohabatesh.ui.theme.dateTaskColor
 import com.example.bemohabatesh.ui.theme.deadLinedTaskColor
 import com.example.bemohabatesh.ui.theme.habitTaskColor
 import com.example.bemohabatesh.ui.theme.simpleTaskColor
-import com.example.bemohabatesh.util.convert.BoolInt
-import com.example.bemohabatesh.util.navigationdrawer.changeActivity
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
-import com.example.bemohabatesh.util.time.shamsi.ShamsiDetail
-import com.example.bemohabatesh.util.view.checkBoxColorSelect
-import com.example.bemohabatesh.util.view.habitTitleTextColor
-import com.example.bemohabatesh.util.view.habitTitleTextModifier
-import com.example.bemohabatesh.util.view.taskTitleTextColor
-import com.example.bemohabatesh.util.view.taskTitleTextModifier
-import com.example.bemohabatesh.view.custom.widget.MultiStateCheckbox
+import com.example.bemohabatesh.utils.convert.BoolInt
+import com.example.bemohabatesh.utils.navigationdrawer.changeActivity
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiDetail
+import com.example.bemohabatesh.utils.view.checkBoxColorSelect
+import com.example.bemohabatesh.utils.view.habitTitleTextColor
+import com.example.bemohabatesh.utils.view.habitTitleTextModifier
+import com.example.bemohabatesh.utils.view.taskTitleTextColor
+import com.example.bemohabatesh.utils.view.taskTitleTextModifier
+import com.example.bemohabatesh.ui.view.custom.widget.MultiStateCheckbox
 import kotlinx.coroutines.launch
 
 

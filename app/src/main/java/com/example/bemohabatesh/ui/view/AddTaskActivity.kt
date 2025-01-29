@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.view
+package com.example.bemohabatesh.ui.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -27,16 +26,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.bemohabatesh.data.model.tasks.SimpleTask
 import com.example.bemohabatesh.data.model.tasks.TaskType
 import com.example.bemohabatesh.ui.theme.dateTaskColor
 import com.example.bemohabatesh.ui.theme.deadLinedTaskColor
 import com.example.bemohabatesh.ui.theme.habitTaskColor
 import com.example.bemohabatesh.ui.theme.simpleTaskColor
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
-import com.example.bemohabatesh.view.ui.theme.Purple40
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.ui.view.ui.theme.Purple40
 import java.time.LocalTime
-import java.util.Calendar
 
 class AddTaskActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.util.view
+package com.example.bemohabatesh.utils.view
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
@@ -16,7 +16,7 @@ import com.example.bemohabatesh.ui.theme.habitBadColor
 import com.example.bemohabatesh.ui.theme.habitErrorColor
 import com.example.bemohabatesh.ui.theme.habitGoodColor
 import com.example.bemohabatesh.ui.theme.habitUnDoneColor
-import com.example.bemohabatesh.util.convert.BoolInt
+import com.example.bemohabatesh.utils.convert.BoolInt
 
 fun checkBoxColorSelect(isDone: Boolean): Color {
     return if (isDone)  CheckboxDoneColor else CheckboxUnDoneColor

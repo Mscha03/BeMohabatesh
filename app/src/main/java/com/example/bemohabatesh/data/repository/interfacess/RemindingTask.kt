@@ -1,7 +1,7 @@
 package com.example.bemohabatesh.data.repository.interfacess
 
 import android.database.Cursor
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
 
 interface RemindingTask {
     fun insertReminder(mainTaskId: Int, date: ShamsiCalendar)

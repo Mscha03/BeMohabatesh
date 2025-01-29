@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.view.ui.theme
+package com.example.bemohabatesh.ui.view.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

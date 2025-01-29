@@ -5,11 +5,10 @@ import android.content.Context
 import android.database.Cursor
 import com.example.bemohabatesh.data.model.database.dateTask.DateTaskDataBaseInformation
 import com.example.bemohabatesh.data.model.database.dateTask.DateTaskReminderDataBaseInformation
-import com.example.bemohabatesh.data.model.tasks.DateTask
 import com.example.bemohabatesh.data.model.tasks.Task
 import com.example.bemohabatesh.data.repository.interfacess.EditableTask
 import com.example.bemohabatesh.data.repository.interfacess.RemindingTask
-import com.example.bemohabatesh.util.time.shamsi.ShamsiCalendar
+import com.example.bemohabatesh.utils.time.shamsi.ShamsiCalendar
 
 class DateTaskDataBaseHelper(context: Context): EditableTask, RemindingTask {
 

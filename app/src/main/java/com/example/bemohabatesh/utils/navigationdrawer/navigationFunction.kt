@@ -1,7 +1,6 @@
-package com.example.bemohabatesh.util.navigationdrawer
+package com.example.bemohabatesh.utils.navigationdrawer
 
 import android.content.Context
-import androidx.compose.ui.platform.LocalContext
 
 fun changeActivity(context: Context,thisClass: Class<*>, destinationClass: Class<*>){
     if (thisClass != destinationClass){

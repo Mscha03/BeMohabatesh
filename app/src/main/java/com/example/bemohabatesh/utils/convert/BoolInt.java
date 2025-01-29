@@ -1,4 +1,4 @@
-package com.example.bemohabatesh.util.convert;
+package com.example.bemohabatesh.utils.convert;
 
 public class BoolInt {
 
